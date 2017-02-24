@@ -1,4 +1,5 @@
 # python-reader
+Basic form lets you add your python code for execution.
 
 This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 4.1.3.
 

@@ -21,10 +21,12 @@ import main from './main/main.component';
 import constants from './app.constants';
 import util from '../components/util/util.module';
 
+import ManagescriptsComponent from './managescripts/managescripts.component';
+
 import './app.css';
 
 angular.module('pythonReaderApp', [ngCookies, ngResource, ngSanitize, uiRouter, navbar, footer,
-  main, constants, util
+  main, constants, util, ManagescriptsComponent
 ])
   .config(routeConfig);
 

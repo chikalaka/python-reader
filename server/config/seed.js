@@ -4,12 +4,49 @@
  */
 
 'use strict';
+import Script from '../api/script/script.model';
 import Thing from '../api/thing/thing.model';
 import config from './environment/';
 
 export default function seedDatabaseIfNeeded() {
   if(config.seedDB) {
-    
+
+    Script.find({}).remove()
+      .then(() => {
+        Script.create({
+          scriptName: 'One Errorsss',
+          scriptCode: 'import sys' +
+                      'if __name__ == "__main__":' +
+                  	    'print >> sys.stdout, "Hello, World!"' +
+                      	'sys.stdout.flush()' +
+                      	'print >> sys.stderr, "FATAL ERROR"' +
+                      	'sys.stderr.flush()' +
+                      	'sys.exit(1)',
+          isWorking: true
+        }, {
+          scriptName: 'One No Errors',
+          scriptCode: 'import sys' +
+                      'if __name__ == "__main__":' +
+                      	'print >> sys.stdout, "Hello, World!"	' +
+                      	'sys.stdout.flush()' +
+                      	'sys.exit(0)',
+          isWorking: true
+        }, {
+          scriptName: 'One Empty',
+          scriptCode: '',
+          isWorking: true
+        }, {
+          scriptName: 'One akjdfjk',
+          scriptCode: 'sdfdsfs',
+          isWorking: true
+        }, {
+          scriptName: 'One hello',
+          scriptCode: 'hello',
+          isWorking: true
+        });
+      })
+    .then(() => console.log('finished populating scripts'))
+    .catch(err => console.log('error populating scripts', err));
 
     Thing.find({}).remove()
       .then(() => {
