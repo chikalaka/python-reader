@@ -78,10 +78,9 @@ export default function seedDatabaseIfNeeded() {
           info: 'Easily deploy your app to Heroku or Openshift with the heroku '
                 + 'and openshift subgenerators'
         });
-    })
-    .then(() => console.log('finished populating things'))
-    .catch(err => console.log('error populating things', err));
+      })
+      .then(() => console.log('finished populating things'))
+      .catch(err => console.log('error populating things', err));
 
-    });
   }
 }

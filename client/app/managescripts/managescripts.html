@@ -1,1 +1,58 @@
-<div>This is the managescripts view.</div>
+<div id="myJumbo" class="jumbotron text-center">
+	<h1>Manage Scripts</h1>
+</div>
+<div class="container">
+	<h3>Add Script</h3>
+	<div class="row">
+		<div class="col-xs-12 col-md-8">
+		  <form class="form-horizontal" role="form" name="addScriptForm" ng-submit="$ctrl.addScript()" novalidate>
+		    <div class="form-group" ng-class="{ 'has-error' : $ctrl.addScriptForm.scriptName.$error.required && !$ctrl.addScriptForm.scriptName.$pristine }">
+		      <div class="col-xs-6">
+						<label for="scriptName">Script Name: </label>
+		        <input type="text" class="form-control" id="scriptName" name="scriptName" placeholder="Your Script Name" ng-model="$ctrl.newScript.scriptName" required>
+		        <span ng-show="$ctrl.addScriptForm.scriptName.$error.required && !$ctrl.addScriptForm.scriptName.$pristine" class="help-block">
+		          Please Fill The Script Name.
+		        </span>
+		      </div>
+		    </div>
+		    <div class="form-group" ng-class="{ 'has-error' : $ctrl.addScriptForm.scriptCode.$error.required && !$ctrl.addScriptForm.scriptCode.$pristine }">
+		      <div class="col-xs-12">
+						<label for="scriptCode">The Script Code: </label>
+		        <textarea id="scriptCode" name="scriptCode" class="form-control" rows="12" ng-model="$ctrl.newScript.scriptCode" placeholder="Your Script Here" required></textarea>
+		        <span ng-show="$ctrl.addScriptForm.scriptCode.$error.required && !$ctrl.addScriptForm.scriptCode.$pristine" class="help-block">
+		            Please Write Here Your Script.
+		        </span>
+		      </div>
+		    </div>
+		    <div class="form-group">
+		      <div class="col-xs-12">
+		        <button type="submit" class="btn btn-primary" ng-disabled="addScriptForm.$invalid">Add Script</button>
+		      </div>
+		    </div>
+		  </form>
+		</div>
+	</div>
+	<hr>
+	<h3>Remove Script</h3>
+	<br>
+	<select class="" name="removeSelect" id="removeSelect" ng-model="$ctrl.removeScriptSelection">
+    <option ng-repeat="option in $ctrl.scripts" value="{{option._id}}">{{option.scriptName}}</option>
+  </select>
+	<button class="btn btn-danger" ng-click="$ctrl.removeScript()" ng-disabled="!$ctrl.removeScriptSelection">Remove Script</button>
+	<hr>
+	<h3>Execute Script</h3>
+	<br>
+	<select name="executeSelect" id="executeSelect" ng-model="$ctrl.executeScriptSelection">
+    <option ng-repeat="option in $ctrl.scripts" value="{{option._id}}">{{option.scriptName}}</option>
+  </select>
+	<button class="btn btn-success" ng-click='$ctrl.executeScript()' ng-disabled="!$ctrl.executeScriptSelection">Execute Script</button>
+	<hr>
+	<label for="repeatSelect"> Repeat select: </label>
+
+	<ul class="list-unstyled">
+		<li ng-repeat='s in $ctrl.scripts'>
+			{{s}}
+		</li>
+	</ul>
+
+</div>
